@@ -1,0 +1,42 @@
+.overallalert{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgb(0,0,0,0.5); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.alert{
+    background-color:black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px;
+    text-align: center;
+    color: white;
+}
+.alertbtn{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.confirmbtn{
+    background-color:white;
+    color: black;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.cancelbtn{
+    background-color:white;
+    color: black;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+  

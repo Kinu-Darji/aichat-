@@ -1,0 +1,46 @@
+.overallsetting{
+    position: absolute;
+    width: 130px;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px 0;
+    color: black;
+    margin-bottom: 40px;
+    bottom: 0;
+}
+.setting{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.menucontainer{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+}
+.menucolumn{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+}
+.menuitem{
+    padding: 10px 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+}
+.backicon{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.darkicon{
+    width: 34px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+}
