@@ -10,6 +10,13 @@ import ContextProvider from "./context/Context";
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
+  // const cors=require("cors");
+  // App.use(
+  //   cors({
+  //     origin:"*",
+  //     methods: ["GET", "POST", "PUT", "DELETE"],
+  //   })
+  // )
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>

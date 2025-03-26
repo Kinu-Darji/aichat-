@@ -127,13 +127,13 @@
 .bottom svg:hover {
     background-color: lightgray;
 }
-.sent-img{
-    height: 150px ;
-    width: 150px ;
-    border-radius: 10px;
+.sent-img {
+    width: 200px;  
+    height: auto;  
+    border-radius: 10px; 
     display: block;
-    transition: transform 0.2s ease-in-out;
-}
+    margin-top: 5px;
+  }
 
 
 
