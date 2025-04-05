@@ -1,4 +1,39 @@
-.overallsetting{
+/* Global Dark Mode */
+[data-theme="dark"] {
+    background-color: #121212;
+    color: white;
+  }
+  
+  /* Global Light Mode */
+  [data-theme="light"] {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Sidebar styling */
+  [data-theme="dark"] .sidebar {
+    background-color: #1e1e1e;
+    color: white;
+  }
+  
+  [data-theme="light"] .sidebar {
+    background-color: #f0f0f0;
+    color: black;
+  }
+  
+  /* Apply theme to main content */
+  [data-theme="dark"] .main-content {
+    background-color: #1a1a1a;
+    color: white;
+  }
+  
+  [data-theme="light"] .main-content {
+    background-color: white;
+    color: black;
+  }
+  
+  /* Overall settings menu */
+  .overallsetting {
     position: absolute;
     width: 130px;
     background-color: white;
@@ -8,39 +43,44 @@
     color: black;
     margin-bottom: 40px;
     bottom: 0;
-}
-.setting{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-.menucontainer{
+  }
+  
+  /* Menu container */
+  .menucontainer {
     display: flex;
     justify-content: space-between;
     padding: 8px;
-}
-.menucolumn{
+  }
+  
+  /* Menu column */
+  .menucolumn {
     list-style: none;
     padding: 0;
     margin: 0;
     width: 50%;
-}
-.menuitem{
+  }
+  
+  /* Menu items */
+  .menuitem {
     padding: 10px 16px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.2s ease-in-out;
-}
-.backicon{
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Back icon */
+  .backicon {
     height: 30px;
     width: 30px;
     cursor: pointer;
-}
-.darkicon{
-    width: 34px;
-    height: 24px;
-    display: flex;
-    flex-direction: row;
-}
+  }
+  
+  /* Apply background to full screen */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease-in-out;
+  }
+  

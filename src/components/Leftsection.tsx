@@ -8,6 +8,7 @@ import { RootState } from "../store";
 import Setting from "./Setting";
 import { useTranslation } from 'react-i18next';
 import "../Translate/i18"; 
+import { TbLayoutSidebar } from "react-icons/tb";
 
 const LeftSection = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const LeftSection = () => {
   const chatCtx = useContext(chatContext);
   const alertRef = useRef(null);
   const [SettingVisible, setSettingsVisible] = useState(false);
+  const [isopen,setIsopen]=useState<boolean>(true);
   const { t } = useTranslation();
 
   if (!chatCtx) {
@@ -26,7 +28,12 @@ const LeftSection = () => {
   return (
     <>
     {SettingVisible  && <div className="setting" onClick={() => setSettingsVisible(!SettingVisible)}/>}
-    <div className="leftsection">
+    <div className={`leftsection ${isopen ? "open" : "closed"}`}>
+        <div className="sidebar-toggle" onClick={() => setIsopen(!isopen)}>
+          <TbLayoutSidebar />
+        </div>
+      {isopen && (
+      <div className="sidebar-content">
       <div className="newchat">
         <button className="button" onClick={() => dispatch(addChat())}>
           {t('chat')}
@@ -90,7 +97,7 @@ const LeftSection = () => {
           ))}
         </div>
       </div>
-
+        
       <div className="user-setting">
         <div className="user-container">
           <svg
@@ -119,6 +126,7 @@ const LeftSection = () => {
           <span className="text2">{t('setting')}</span>
         </div>
       </div>
+      </div>)}
       {SettingVisible && <Setting />}
       {showAlert && (
         <div ref={alertRef}>

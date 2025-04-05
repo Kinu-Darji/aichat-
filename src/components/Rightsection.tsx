@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { chatContext } from "../context/Context";
 import { addMessageToChat } from "../redux/chatSlice";
@@ -8,12 +8,17 @@ import { useTranslation } from "react-i18next";
 import "../Translate/i18";
 import { LuImagePlus } from "react-icons/lu";
 import Typewriter from "typewriter-effect";
+import {  onAuthStateChanged } from "firebase/auth";
+import { auth } from "../Firebase/Firebase";
+// import { useAuth0 } from "@auth0/auth0-react";
 
 const Rightsection: React.FC = () => {
   const dispatch = useDispatch();
   const chatCtx = useContext(chatContext);
   const { t } = useTranslation();
-
+  // const { loginWithRedirect } = useAuth0();
+  // const { logout } = useAuth0();
+  // const { user, isAuthenticated } = useAuth0();
   const activeChatId = useSelector((state: RootState) => state.chat.activeChatId);
   const chats = useSelector((state: RootState) => state.chat.chats);
   const activeChat = chats.find((chat) => chat.id === activeChatId);
@@ -21,10 +26,18 @@ const Rightsection: React.FC = () => {
 
   const [displaymessages, setdisplaymessages] = useState<number[]>([]);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setuser(user);
+    });
+    return () => unsubscribe();
+  }, []);
+
   if (!chatCtx) {
     return <div>Error: Chat context is not available.</div>;
   }
 
+  
   const {
     message,
     setMessage,
@@ -42,7 +55,11 @@ const Rightsection: React.FC = () => {
     inputRef,
     generateImage,
     ailoading,         
-    ailoadingmsg       
+    ailoadingmsg  ,
+    handleLogin,
+    handlelogout  ,
+    user,
+    setuser   
   } = chatCtx;
 
   const handleSend = () => {
@@ -64,6 +81,28 @@ const Rightsection: React.FC = () => {
 
   return (
     <div className="rightsection">
+      {/* <div className="chat-header">
+      <div className="user-div">
+        {isAuthenticated && <p className="username">Welcome {user?.name}</p>}
+        </div>
+        <div className="logn-logt-btn">
+       {isAuthenticated ? (
+          <button className="logout" onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>Log Out</button>
+        ) : (
+          <button className="login" onClick={() => loginWithRedirect()}>Log In</button>
+        )}
+        </div>
+        </div> */}
+        <div className="chat-header">
+          <div className="user-div">
+            {user ? <p className="p">Welcome {user.displayName || user.email}</p> : <p className="p">please login</p>}
+          </div>
+          <div>
+            {user ?(<button className="logout" onClick={handlelogout}>Log Out</button>):(
+              <button className="login" onClick={handleLogin}>Log In</button>
+            )}
+          </div>
+        </div>
       <div className="nochat">
         {chatHistory.length > 0 ? (
           <div className="messages">

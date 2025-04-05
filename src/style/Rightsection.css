@@ -34,6 +34,11 @@
     text-align: center;
     padding: 200px;
 }
+.p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
 
 
 .messages::-webkit-scrollbar {
@@ -133,7 +138,47 @@
     border-radius: 10px; 
     display: block;
     margin-top: 5px;
-  }
+}
+.logout{
+    height: 40px;
+    width: 70px;
+    background-color: rgb(90, 88, 88);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: solid;
+    cursor: pointer;
+}
+.login{
+    height: 40px;
+    width: 70px;
+    background-color: rgb(90, 88, 88);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: solid;
+    cursor: pointer;
+}
+.logn-logt-btn{
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
+.chat-header{
+    display: flex;
+    flex-direction: row ;
+    justify-content: end;
+    align-items: center;
+}
+.user-div{
+    display: flex;
+    justify-content: end;
+    margin: 5px;
+}
+.username{
+    font-size: 18px;
+    color: #888;
+}
 
 
 

@@ -15,7 +15,6 @@ interface Chat {
 interface ChatState {
   chats: Chat[];
    activeChatId: number | null;
-  //activeChatId:any;
 }
 
 let chatCounter = 1;
@@ -64,10 +63,6 @@ const chatSlice = createSlice({
         state.activeChatId = state.chats.length > 0 ? state.chats[0].id : null;
       }
     },
-    // const updateMessageInChat = ({ chatId, messageId, newMessage }) => ({
-    //   type: "UPDATE_MESSAGE_IN_CHAT",
-    //   payload: { chatId, messageId, newMessage },
-    // });    
   },
 });
 

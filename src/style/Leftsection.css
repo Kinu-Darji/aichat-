@@ -1,11 +1,25 @@
 .leftsection {
     height: 100%;
+    /* width: 250px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: rgb(61, 59, 59);
     padding: 10px;
 }
+.leftsection.closed{
+    width: 60px;
+}
+.sidebar-toggle{
+    padding: 10px;
+    cursor: pointer;
+}
+.sidebar-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
 
 .newcheat {
     display: flex;
@@ -37,15 +51,15 @@ svg{
 .chat-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: medium;
     font-style: normal;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    padding: 10px;
-    transition: background 0.3s ease;
+    padding: 8px;
+    transition: background 0.2s ;
 
 }
 
@@ -74,7 +88,7 @@ svg{
 .user-setting{
     display: flex;
     flex-direction: column;
-    margin-bottom: 12px;
+    margin-top: auto;
 }
 
 .user-container {

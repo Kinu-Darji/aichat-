@@ -13,7 +13,7 @@
 
 }
 .left{
-  background-color: rgb(80, 78, 78);
+  background-color: rgb(255, 255, 255);
   width:15%;
   overflow: hidden;
   color: white;
@@ -23,4 +23,16 @@
   background-color:wheat;
   color: black;
   overflow: hidden;
+}
+
+/* 🌙 Dark Mode */
+.dark-mode {
+  background-color: #121212 !important;
+  color: white !important;
+}
+
+/* ☀️ Light Mode */
+.light-mode {
+  background-color: white !important;
+  color: black !important;
 }

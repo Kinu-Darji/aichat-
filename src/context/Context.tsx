@@ -5,6 +5,9 @@ import { addMessageToChat, deleteChat } from "../redux/chatSlice";
 import { RootState } from "../store";
 import "../Translate/i18";
 import { useTranslation } from 'react-i18next';
+import { GoogleAuthProvider, signOut } from "firebase/auth";
+import{signInWithPopup}from "firebase/auth"
+import { auth } from "../Firebase/Firebase";
 
 interface ChatContextProps {
   message: string;
@@ -40,6 +43,10 @@ interface ChatContextProps {
   setAiloading: React.Dispatch<React.SetStateAction<boolean>>;
   ailoadingmsg: string;
   setAiloadingmsg: React.Dispatch<React.SetStateAction<string>>;
+  handleLogin:()=>void;
+  handlelogout:()=>void;
+  user:any;
+  setuser:React.Dispatch<React.SetStateAction<any>>;
 }
 
 export const chatContext = createContext<ChatContextProps | undefined>(undefined);
@@ -62,8 +69,31 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) 
   const [menu, setMenu] = useState<"Themes" | "Languages" | null>(null);
   const [ailoading, setAiloading] = useState<boolean>(false); 
   const [ailoadingmsg, setAiloadingmsg] = useState<string>(""); 
+  const [user,setuser]=useState<any>(null);
   const inputRef = useRef<HTMLInputElement >(null);
   const { i18n } = useTranslation();
+
+
+  const handleLogin=async()=>{
+      const provider=new GoogleAuthProvider();
+      try{
+        const result=await signInWithPopup(auth,provider);
+        setuser(result.user);
+        alert(`welcome,${result.user.displayName || result.user.email}!`);
+      }catch(error){
+        console.error("Login Error",error)
+      }
+    }
+  
+    const handlelogout=async()=>{
+      try{
+        await signOut(auth);
+        setuser(null);
+        alert("You have been logout ");
+      }catch{
+        console.log("logout error..");
+      }
+    }
 
 
   const handleMenu = (menu: "Themes" | "Languages") => {
@@ -215,6 +245,7 @@ const handleLanguages = (lang: string) => {
       }
   
       setDisable(true);
+      console.log("disable func",disable);
       setMessage("");
   
       try {
@@ -237,8 +268,8 @@ const handleLanguages = (lang: string) => {
       } catch (error) {
         console.error("Error fetching response:", error);
       }
-  
       setDisable(false);
+      console.log("disable false",disable)
     }
 
   return (
@@ -273,7 +304,14 @@ const handleLanguages = (lang: string) => {
         handleMenu,
         handleThemes,
         generateImage,
-        ailoading, setAiloading, ailoadingmsg, setAiloadingmsg
+        ailoading, 
+        setAiloading, 
+        ailoadingmsg, 
+        setAiloadingmsg,
+        handleLogin,
+        handlelogout,
+        user,
+        setuser
       }}
     >
       {children}
